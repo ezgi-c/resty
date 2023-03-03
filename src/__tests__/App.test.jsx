@@ -6,8 +6,7 @@ import App from '../App';
 test('renders Header', () => {
   render(<App />);
 
-const headerElement = screen.getByTestId('header');
-expect(headerElement).toBeInTheDocument();
-// expect(screen.getByTestId('footer')).toBeInTheDocument();
-
+  const headerElement = screen.getByTestId('header');
+  expect(headerElement).toBeInTheDocument();
+  // expect(screen.getByTestId('footer')).toBeInTheDocument();
 });
