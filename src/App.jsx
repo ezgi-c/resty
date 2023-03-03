@@ -8,7 +8,6 @@ import Form from './Components/Form';
 import Results from './Components/Results';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,22 +21,22 @@ class App extends React.Component {
     const data = {
       count: 2,
       results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
+        { name: 'fake thing 1', url: 'http://fakethings.com/1' },
+        { name: 'fake thing 2', url: 'http://fakethings.com/2' },
       ],
     };
-    this.setState({data, requestParams});
-  }
+    this.setState({ data, requestParams });
+  };
 
   render() {
     return (
       <React.Fragment>
-        <Header data-testid="header"/>
-        <div >Request Method: {this.state.requestParams.method}</div>
+        <Header data-testid="header" />
+        <div>Request Method: {this.state.requestParams.method}</div>
         <div>URL: {this.state.requestParams.url}</div>
         <Form handleApiCall={this.callApi} />
-        <Results  data={this.state.data} />
-        <Footer data-testid="footer"/>
+        <Results data={this.state.data} />
+        <Footer data-testid="footer" />
       </React.Fragment>
     );
   }
