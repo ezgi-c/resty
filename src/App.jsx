@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 
@@ -7,8 +7,7 @@ import Footer from './Components/Footer';
 import Form from './Components/Form';
 import Results from './Components/Results';
 
-function App () {
-
+function App() {
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
 
@@ -26,17 +25,16 @@ function App () {
     setRequestParams(requestParams);
   };
 
-    return (
-      <React.Fragment>
-        <Header data-testid="header" />
-        <div>Request Method: {requestParams.method}</div>
-        <div>URL: {requestParams.url}</div>
-        <Form handleApiCall={callApi} />
-        <Results data={data} />
-        <Footer data-testid="footer" />
-      </React.Fragment>
-    );
-  }
-
+  return (
+    <React.Fragment>
+      <Header data-testid="header" />
+      <div>Request Method: {requestParams.method}</div>
+      <div>URL: {requestParams.url}</div>
+      <Form handleApiCall={callApi} />
+      <Results data={data} />
+      <Footer data-testid="footer" />
+    </React.Fragment>
+  );
+}
 
 export default App;

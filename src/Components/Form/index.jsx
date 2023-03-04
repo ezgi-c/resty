@@ -12,7 +12,7 @@ function Form({ handleApiCall }) {
     const formData = {
       method: method,
       url: url,
-      jsonObject: jsonObject
+      jsonObject: jsonObject,
     };
     handleApiCall(formData);
     console.log(formData);
@@ -33,23 +33,51 @@ function Form({ handleApiCall }) {
         </label>
 
         <label className="methods">
-          <input type="radio" value="GET" name="method" onChange={(e)=> setMethod(e.target.value)} /> GET
+          <input
+            type="radio"
+            value="GET"
+            name="method"
+            onChange={(e) => setMethod(e.target.value)}
+          />{' '}
+          GET
         </label>
 
         <label className="methods">
-          <input type="radio" value="POST" name="method" onChange={(e)=> setMethod(e.target.value)}/> POST
+          <input
+            type="radio"
+            value="POST"
+            name="method"
+            onChange={(e) => setMethod(e.target.value)}
+          />{' '}
+          POST
         </label>
 
         <label className="methods">
-          <input type="radio" value="PUT" name="method" onChange={(e)=> setMethod(e.target.value)}/> PUT
+          <input
+            type="radio"
+            value="PUT"
+            name="method"
+            onChange={(e) => setMethod(e.target.value)}
+          />{' '}
+          PUT
         </label>
 
         <label className="methods">
-          <input type="radio" value="DELETE" name="method" onChange={(e)=> setMethod(e.target.value)} /> DELETE
+          <input
+            type="radio"
+            value="DELETE"
+            name="method"
+            onChange={(e) => setMethod(e.target.value)}
+          />{' '}
+          DELETE
         </label>
 
         <label>
-          <textarea value={jsonObject} name= 'textValue' onChange={(e) => setJsonObject(e.target.value) } />
+          <textarea
+            value={jsonObject}
+            name="textValue"
+            onChange={(e) => setJsonObject(e.target.value)}
+          />
         </label>
       </form>
     </>
