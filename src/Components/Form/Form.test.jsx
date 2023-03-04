@@ -18,5 +18,6 @@ test('it should call handleApiCall when form is submitted', () => {
   expect(handleApiCall).toHaveBeenCalledWith({
     method: 'GET',
     url: 'https://pokeapi.co/api/v2/pokemon',
+    jsonObject: {},
   });
 });
