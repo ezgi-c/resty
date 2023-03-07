@@ -13,7 +13,7 @@ function Form({ handleApiCall }) {
       method: method,
       url: url,
       jsonObject: jsonObject,
-    };
+    }; 
     handleApiCall(formData);
     console.log(formData);
   };
