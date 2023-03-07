@@ -16,23 +16,13 @@ function App() {
     const { url, method } = requestParams;
 
     try {
-      const response = await fetch(url, {method});
+      const response = await fetch(url, { method });
       const data = await response.json();
-      setData(data)
+      setData(data);
       setRequestParams(requestParams);
     } catch (e) {
       console.error(e);
     }
-    // mock output
-    // const data = {
-    //   count: 2,
-    //   results: [
-    //     { name: 'fake thing 1', url: 'http://fakethings.com/1' },
-    //     { name: 'fake thing 2', url: 'http://fakethings.com/2' },
-    //   ],
-    // };
-    // setData(data);
-    // setRequestParams(requestParams);
   };
 
   return (
