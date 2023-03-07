@@ -11,18 +11,28 @@ function App() {
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
 
-  const callApi = (requestParams) => {
-    // requestParams is the formData object with url and method
+  const callApi = async (requestParams) => {
+    // requestParams is the formData object with url and method properties
+    const { url, method } = requestParams;
+
+    try {
+      const response = await fetch(url, {method});
+      const data = await response.json();
+      setData(data)
+      setRequestParams(requestParams);
+    } catch (e) {
+      console.error(e);
+    }
     // mock output
-    const data = {
-      count: 2,
-      results: [
-        { name: 'fake thing 1', url: 'http://fakethings.com/1' },
-        { name: 'fake thing 2', url: 'http://fakethings.com/2' },
-      ],
-    };
-    setData(data);
-    setRequestParams(requestParams);
+    // const data = {
+    //   count: 2,
+    //   results: [
+    //     { name: 'fake thing 1', url: 'http://fakethings.com/1' },
+    //     { name: 'fake thing 2', url: 'http://fakethings.com/2' },
+    //   ],
+    // };
+    // setData(data);
+    // setRequestParams(requestParams);
   };
 
   return (

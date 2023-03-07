@@ -12,8 +12,8 @@ This goal of this lab is to build the basic scaffolding of the application and c
 
 Phase 2 of RESTy app.
 
-- Refactor App into a functioal component
-- Refactor components usonf `this.setState()` to implement the `useState()` react API hook
+- Refactor App into a functional component
+- Refactor components using `this.setState()` to implement the `useState()` react API hook
 - Refactor the Form Component to implement user input from form elements, instead of hard coded string values.
 
 ### UML Diagram
