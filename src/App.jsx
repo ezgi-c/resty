@@ -10,10 +10,12 @@ import Results from './Components/Results';
 const initialState = {
   data: null,
   requestParams: {},
+  requestJson: {},
 }
 
 const UPDATE_DATA = "update data";
 const UPDATE_REQ_PARAMS = 'update request params'
+const UPDATE_REQ_JSON = 'update request json'
 
 function handleState(state, action) {
   if (action[0] === UPDATE_DATA) {
@@ -24,6 +26,11 @@ function handleState(state, action) {
   if (action[0] === UPDATE_REQ_PARAMS) {
     const newParams = action[1];
     state.requestParams = newParams;
+  }
+
+  if (action[0] === UPDATE_REQ_JSON) {
+    const newRequestJson = action[1];
+    state.requestJson = newRequestJson;
   }
 
   return {...state};
@@ -41,10 +48,10 @@ function App() {
 
   const callApi = async (requestParams) => {
     // requestParams is the formData object with url and method properties
-    const { url, method } = requestParams;
+    const { url, method, requestJson } = requestParams;
 
     try {
-      const response = await fetch(url, { method });
+      const response = await fetch(url, { method }, {requestJson});
       const data = await response.json();
       dispatch([UPDATE_DATA, data]);
       dispatch([UPDATE_REQ_PARAMS, requestParams]);      
