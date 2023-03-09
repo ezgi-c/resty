@@ -26,7 +26,7 @@ function handleState(state, action) {
     state.requestParams = newParams;
   }
 
-  return state;
+  return {...state};
 }
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
       const response = await fetch(url, { method });
       const data = await response.json();
       dispatch([UPDATE_DATA, data]);
-      dispatch([UPDATE_REQ_PARAMS, requestParams]);
+      dispatch([UPDATE_REQ_PARAMS, requestParams]);      
     } catch (e) {
       console.error(e);
     }
