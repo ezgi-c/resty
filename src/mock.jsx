@@ -6,7 +6,6 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Form from './Components/Form';
 import Results from './Components/Results';
-import History from './Components/History';
 
 const initialState = {
   loading: false,
@@ -14,6 +13,7 @@ const initialState = {
   requestParams: {},
   requestJson: {},
   history: [],
+  currentApiCall: null,
 }
 
 const UPDATE_LOADING = 'update loading';
@@ -21,6 +21,7 @@ const UPDATE_DATA = "update data";
 const UPDATE_REQ_PARAMS = 'update request params'
 const UPDATE_REQ_JSON = 'update request json'
 const UPDATE_HISTORY = "update history";
+const UPDATE_API_CALL = 'update current API call';
 
 function handleState(state, action) {
   if (action[0] === UPDATE_LOADING) {
@@ -49,6 +50,11 @@ function handleState(state, action) {
     state.history = [...state.history, newApiCall];
   }
 
+  if (action[0] === UPDATE_API_CALL) {
+    const index = action[1];
+    state.currentApiCall = state.history[index];
+  }
+
   return {...state};
 }
 
@@ -61,7 +67,7 @@ function App() {
   // const data = state.data;
   // const requestParams = state.requestParams;
 
-  const { loading, data, requestParams } = state;
+  const { loading, data, requestParams, history, currentApiCall } = state;
 
   const callApi = async (requestParams) => {
     // requestParams is the formData object with url and method properties
@@ -91,6 +97,13 @@ function App() {
 
       dispatch([UPDATE_LOADING, false]);
     }
+
+    const handleHistoryClick= (index) => {
+      const clickedItem = state.history[index];
+      dispatch([UPDATE_DATA, clickedItem.data]);
+      dispatch([UPDATE_REQ_PARAMS, clickedItem.requestParams]);
+      dispatch([UPDATE_HISTORY, clickedItem]);
+    }
   };
 
   return (
@@ -101,8 +114,11 @@ function App() {
       <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
       <Results data={data} />
-      <History history={state.history}/>
       <Footer data-testid="footer" />
+      <div>History:</div>
+      <ul>
+        {state.history.map((api))}
+      </ul>
     </React.Fragment>
   );
 }

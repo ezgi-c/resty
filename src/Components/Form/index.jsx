@@ -1,19 +1,61 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 import './Form.scss';
 
+const initialState = {
+  url: '',
+  method: 'GET',
+  requestJson: {}
+}
+
+const UPDATE_URL = 'update url';
+const UPDATE_METHOD = 'update method';
+const UPDATE_REQ_JSON = 'update POST/PUT request json'
+
+function handleState(state, action) {
+  if (action[0] === UPDATE_URL) {
+    const newUrl = action[1];
+    state.url = newUrl;
+  }
+
+  if (action[0] === UPDATE_METHOD) {
+    const newMethod = action[1];
+    state.method = newMethod;
+  }
+
+  if (action[0] === UPDATE_REQ_JSON) {
+    const newRequestJson = action[1];
+    state.requestJson = newRequestJson;
+  }
+
+  return {...state};
+}
+
 function Form({ handleApiCall }) {
-  const [method, setMethod] = useState('GET');
-  const [url, setUrl] = useState('');
-  const [jsonObject, setJsonObject] = useState({});
+
+  const [state, dispatch] = useReducer(handleState, initialState);
+
+  const url = state.url;
+  const method = state.method;
+  const requestJson = state.requestJson;
+
+  const formData = {
+    method: method,
+    url: url,
+    requestJson: requestJson,
+  }; 
+
+  // const [method, setMethod] = useState('GET');
+  // const [url, setUrl] = useState('');
+  // const [jsonObject, setJsonObject] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      method: method,
-      url: url,
-      jsonObject: jsonObject,
-    }; 
+    // const formData = {
+    //   method: method,
+    //   url: url,
+    //   requestJson: requestJson,
+    // }; 
     handleApiCall(formData);
     console.log(formData);
   };
@@ -27,7 +69,9 @@ function Form({ handleApiCall }) {
             name="url"
             type="text"
             value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            // onChange={(e) => setUrl(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_URL, e.target.value])}
+
           />
           <button type="submit">GO!</button>
         </label>
@@ -37,8 +81,9 @@ function Form({ handleApiCall }) {
             type="radio"
             value="GET"
             name="method"
-            onChange={(e) => setMethod(e.target.value)}
-          />{' '}
+            // onChange={(e) => setMethod(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_METHOD, e.target.value])}
+          />
           GET
         </label>
 
@@ -47,8 +92,9 @@ function Form({ handleApiCall }) {
             type="radio"
             value="POST"
             name="method"
-            onChange={(e) => setMethod(e.target.value)}
-          />{' '}
+            // onChange={(e) => setMethod(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_METHOD, e.target.value])}
+          />
           POST
         </label>
 
@@ -57,7 +103,8 @@ function Form({ handleApiCall }) {
             type="radio"
             value="PUT"
             name="method"
-            onChange={(e) => setMethod(e.target.value)}
+            // onChange={(e) => setMethod(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_METHOD, e.target.value])}
           />{' '}
           PUT
         </label>
@@ -67,16 +114,17 @@ function Form({ handleApiCall }) {
             type="radio"
             value="DELETE"
             name="method"
-            onChange={(e) => setMethod(e.target.value)}
+            // onChange={(e) => setMethod(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_METHOD, e.target.value])}
           />{' '}
           DELETE
         </label>
 
         <label>
           <textarea
-            value={jsonObject}
+            // value={jsonObject}
             name="textValue"
-            onChange={(e) => setJsonObject(e.target.value)}
+            // onChange={(e) => setJsonObject(e.target.value)}
           />
         </label>
       </form>
