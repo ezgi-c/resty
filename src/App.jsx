@@ -102,6 +102,7 @@ function App() {
       <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
       <OpenAI/>
+      <div>Result:</div>
       <Results data={data} />
       <History history={state.history}/>
       <Footer data-testid="footer" />
