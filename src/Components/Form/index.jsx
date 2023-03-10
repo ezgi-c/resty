@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import './Form.scss';
 
 const initialState = {
-  url: '',
+  url: 'https://catfact.ninja/fact',
   method: 'GET',
   requestJson: {}
 }
@@ -122,11 +122,12 @@ function Form({ handleApiCall }) {
 
         <label>
           <textarea
-            // value={jsonObject}
+            value={requestJson}
             name="textValue"
-            // onChange={(e) => setJsonObject(e.target.value)}
+            onChange={(e) => dispatch([UPDATE_REQ_JSON, e.target.value])}
           />
         </label>
+      
       </form>
     </>
   );

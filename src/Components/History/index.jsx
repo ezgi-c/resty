@@ -1,9 +1,12 @@
 import React from "react";
 
+import './History.scss'
+
 function History({history}) {  
+  if (history.length) {
     return (
-      <div>
-        <h2>History</h2>
+      <div className="history">
+        <h3>History</h3>
         <ul>
           {history.map((apiCall, index) => (
             <li key={index} 
@@ -12,11 +15,15 @@ function History({history}) {
               <div>Method: {apiCall.method}</div>
               <div>URL: {apiCall.url}</div>
               {/* <div>DATA: {apiCall.data}</div> */}
+              <pre>Data: 
+                {apiCall.data ? JSON.stringify(apiCall.data, undefined, 2) : null}</pre>
+              <br></br>
             </li>
           ))}
         </ul>
       </div>
     );
   }
+}
   
   export default History;
