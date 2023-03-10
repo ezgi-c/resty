@@ -12,7 +12,7 @@ function History({history}) {
             >
               <div>Method: {apiCall.method}</div>
               <div>URL: {apiCall.url}</div>
-              {/* <div>DATA: {apiCall.data}</div> */}
+              <div>DATA: {apiCall.data}</div>
             </li>
           ))}
         </ul>
