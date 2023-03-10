@@ -1,6 +1,7 @@
 import React from "react";
 
 function History({history}) {  
+  if (history.length) {
     return (
       <div>
         <h2>History</h2>
@@ -18,5 +19,6 @@ function History({history}) {
       </div>
     );
   }
+}
   
   export default History;

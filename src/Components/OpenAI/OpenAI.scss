@@ -1,0 +1,67 @@
+.openAi {
+    width: 300px;
+    overflow: scroll;
+    max-height: 600px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    
+    h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: black;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color:gray;
+      text-align: left;
+    }
+    
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #0084ff;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #006fce;
+      }
+    }
+    
+    div {
+      margin-top: 10px;
+      font-size: 16px;
+      color: black;
+      text-align: left;
+    }
+  }

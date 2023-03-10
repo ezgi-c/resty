@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import Form from './Components/Form';
 import Results from './Components/Results';
 import History from './Components/History';
+import OpenAI from './Components/OpenAI';
 
 const initialState = {
   loading: false,
@@ -100,9 +101,11 @@ function App() {
       <div>Request Method: {requestParams.method}</div>
       <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
+      <OpenAI/>
       <Results data={data} />
       <History history={state.history}/>
       <Footer data-testid="footer" />
+      
     </React.Fragment>
   );
 }
