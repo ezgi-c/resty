@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import './Form.scss';
 
 const initialState = {
-  url: 'https://swapi.dev/api/people/1/',
+  url: 'https://catfact.ninja/fact',
   method: 'GET',
   requestJson: {}
 }
