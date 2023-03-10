@@ -8,10 +8,9 @@ function History({history}) {
       <div className="history">
         <p>History:</p>
         <ul>
-          {history.map((apiCall, index) => (
-            <li key={index} 
-            // onClick={() => handleHistoryClick(index)}
-            >
+          {history.slice().reverse().map((apiCall,index) => (
+          // {history.map((apiCall, index) => (
+            <li key={index}            >
               <div>Method: {apiCall.method}</div>
               <div>URL: {apiCall.url}</div>
               {/* <div>DATA: {apiCall.data}</div> */}
