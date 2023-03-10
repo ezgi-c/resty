@@ -6,7 +6,7 @@ function History({history}) {
   if (history.length) {
     return (
       <div className="history">
-        <h3>History</h3>
+        <p>History:</p>
         <ul>
           {history.map((apiCall, index) => (
             <li key={index} 
