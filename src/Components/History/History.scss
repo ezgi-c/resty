@@ -5,7 +5,8 @@
   //   background-color:white;
   color: gray;
    padding-top: 1em;
-  margin: 0;
+  margin-left: 30px;
+  width: 50vw;
 
   p {
     color: black;
@@ -14,10 +15,27 @@
     padding: 0em;
   }
 
+  li:hover {
+    color:black;
+    cursor:pointer;
+    background-color: bisque;
+    
+  }
+
   pre {
       padding: 1em 3em;
 
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+  pre:hover {
+    color: black;
+    background-color: bisque;
+    cursor:pointer;
+
+
+  }
+
+
 }

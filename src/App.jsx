@@ -102,9 +102,11 @@ function App() {
       <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
       <OpenAI/>
-      <div>Result:</div>
+      <div className='results-history'>
+      {/* <div>Result:</div> */}
       <Results data={data} />
       <History history={state.history}/>
+      </div>
       <Footer data-testid="footer" />
       
     </React.Fragment>

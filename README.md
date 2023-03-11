@@ -1,4 +1,7 @@
 # RESTy
+    <!-- - click on a previous API call and show the data again, along with updating your deployment.
+    -  get the test passing change `jsonObject` to `requestJson` in your form test.
+    -  Also you might want to move your history component to the top, because for longer results it gets moved all the way to the bottom of the page. -->
 
 live url: [https://ezgi-c.github.io/resty/](https://ezgi-c.github.io/resty/)
 
@@ -34,6 +37,8 @@ __Major functionality for this phase:__
 `<History />`: Iterates the history array in state and shows the previous API calls.
 - When one is clicked on, show the results in the results component.
     - Note: the results component renders whatever is in state.
+
+
 
 ### UML Diagram
 

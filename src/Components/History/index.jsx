@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useState } from 'react';
 
-import './History.scss'
+import './History.scss';
 
-function History({history}) {  
+function History({ history }) {
+  const [selectedData, setSelectedData] = useState(null);
+
+  const handleItemClick = (apiCall) => {
+    setSelectedData(apiCall.data);
+  };
   if (history.length) {
     return (
       <div className="history">
         <p>History:</p>
         <ul>
-          {history.slice().reverse().map((apiCall,index) => (
-          // {history.map((apiCall, index) => (
-            <li key={index}            >
-              <div>Method: {apiCall.method}</div>
-              <div>URL: {apiCall.url}</div>
-              {/* <div>DATA: {apiCall.data}</div> */}
-              <pre>Data: 
-                {apiCall.data ? JSON.stringify(apiCall.data, undefined, 2) : null}</pre>
-              <br></br>
-            </li>
-          ))}
+          {history
+            .slice()
+            .reverse()
+            .map((apiCall, index) => (
+              <li key={index} onClick={() => handleItemClick(apiCall)}>
+                <div>Method: {apiCall.method}</div>
+                <div>URL: {apiCall.url}</div>
+                <br></br>
+              </li>
+            ))}
         </ul>
+        {selectedData && (
+          <div>
+            <pre onClick={() => setSelectedData(null)}>
+              {JSON.stringify(selectedData, undefined, 2)}
+            </pre>
+          </div>
+        )}
       </div>
     );
   }
 }
-  
-  export default History;
+
+export default History;
