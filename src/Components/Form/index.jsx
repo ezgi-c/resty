@@ -5,12 +5,12 @@ import './Form.scss';
 const initialState = {
   url: 'https://catfact.ninja/fact',
   method: 'GET',
-  requestJson: {}
-}
+  requestJson: {},
+};
 
 const UPDATE_URL = 'update url';
 const UPDATE_METHOD = 'update method';
-const UPDATE_REQ_JSON = 'update POST/PUT request json'
+const UPDATE_REQ_JSON = 'update POST/PUT request json';
 
 function handleState(state, action) {
   if (action[0] === UPDATE_URL) {
@@ -28,11 +28,10 @@ function handleState(state, action) {
     state.requestJson = newRequestJson;
   }
 
-  return {...state};
+  return { ...state };
 }
 
 function Form({ handleApiCall }) {
-
   const [state, dispatch] = useReducer(handleState, initialState);
 
   const url = state.url;
@@ -43,7 +42,7 @@ function Form({ handleApiCall }) {
     method: method,
     url: url,
     requestJson: requestJson,
-  }; 
+  };
 
   // const [method, setMethod] = useState('GET');
   // const [url, setUrl] = useState('');
@@ -55,7 +54,7 @@ function Form({ handleApiCall }) {
     //   method: method,
     //   url: url,
     //   requestJson: requestJson,
-    // }; 
+    // };
     handleApiCall(formData);
     console.log(formData);
   };
@@ -71,7 +70,6 @@ function Form({ handleApiCall }) {
             value={url}
             // onChange={(e) => setUrl(e.target.value)}
             onChange={(e) => dispatch([UPDATE_URL, e.target.value])}
-
           />
           <button type="submit">GO!</button>
         </label>
@@ -127,7 +125,6 @@ function Form({ handleApiCall }) {
             onChange={(e) => dispatch([UPDATE_REQ_JSON, e.target.value])}
           />
         </label>
-      
       </form>
     </>
   );

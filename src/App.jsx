@@ -15,13 +15,13 @@ const initialState = {
   requestParams: {},
   requestJson: {},
   history: [],
-}
+};
 
 const UPDATE_LOADING = 'update loading';
-const UPDATE_DATA = "update data";
-const UPDATE_REQ_PARAMS = 'update request params'
-const UPDATE_REQ_JSON = 'update request json'
-const UPDATE_HISTORY = "update history";
+const UPDATE_DATA = 'update data';
+const UPDATE_REQ_PARAMS = 'update request params';
+const UPDATE_REQ_JSON = 'update request json';
+const UPDATE_HISTORY = 'update history';
 
 function handleState(state, action) {
   if (action[0] === UPDATE_LOADING) {
@@ -50,7 +50,7 @@ function handleState(state, action) {
     state.history = [...state.history, newApiCall];
   }
 
-  return {...state};
+  return { ...state };
 }
 
 function App() {
@@ -68,27 +68,25 @@ function App() {
     // requestParams is the formData object with url and method properties
     const { url, method, requestJson } = requestParams;
 
-
     try {
       dispatch([UPDATE_LOADING, true]);
 
-      const response = await fetch(url, { method }, {requestJson});
+      const response = await fetch(url, { method }, { requestJson });
       const data = await response.json();
 
       dispatch([UPDATE_DATA, data]);
-      dispatch([UPDATE_REQ_PARAMS, requestParams]);  
-      dispatch([UPDATE_REQ_JSON, requestJson]);  
-      dispatch([UPDATE_HISTORY, { method, url, data} ])  
-      console.log(state.history);  
+      dispatch([UPDATE_REQ_PARAMS, requestParams]);
+      dispatch([UPDATE_REQ_JSON, requestJson]);
+      dispatch([UPDATE_HISTORY, { method, url, data }]);
+      console.log(state.history);
 
       dispatch([UPDATE_LOADING, false]);
-
     } catch (e) {
       console.error(e);
 
-      dispatch([ UPDATE_DATA, null ]);
-      dispatch([ UPDATE_REQ_PARAMS, {} ]);
-      dispatch([ UPDATE_REQ_JSON, {} ]);
+      dispatch([UPDATE_DATA, null]);
+      dispatch([UPDATE_REQ_PARAMS, {}]);
+      dispatch([UPDATE_REQ_JSON, {}]);
 
       dispatch([UPDATE_LOADING, false]);
     }
@@ -97,16 +95,19 @@ function App() {
   return (
     <React.Fragment>
       <Header data-testid="header" />
+      <History history={state.history} />
       {loading && <div>Loading...</div>}
+      <br></br>
       <div>Request Method: {requestParams.method}</div>
       <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
-      <OpenAI/>
-      <div>Result:</div>
+      <OpenAI />
+      {/* <div className='results-history'> */}
+      {/* <div>Result:</div> */}
       <Results data={data} />
-      <History history={state.history}/>
+      {/* <History history={state.history}/> */}
+      {/* </div> */}
       <Footer data-testid="footer" />
-      
     </React.Fragment>
   );
 }

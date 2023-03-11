@@ -35,8 +35,16 @@ __Major functionality for this phase:__
 - When one is clicked on, show the results in the results component.
     - Note: the results component renders whatever is in state.
 
+
+
 ### UML Diagram
 
 ![UML](lab26UML.png)
 
 [GitHub actions](https://github.com/ezgi-c/resty/actions/)
+
+<!-- 
+-x- click on a previous API call and show the data again,  
+-- along with updating your deployment.  
+-x- get the test passing change `jsonObject` to `requestJson` in your form test.  
+-x-  Also you might want to move your history component to the top, because for longer results it gets moved all the way to the bottom of the page. -->
