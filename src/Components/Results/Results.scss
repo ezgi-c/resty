@@ -1,19 +1,18 @@
-
 .results {
-    border-top: 1px solid #eee;
-    background-color:white;
-    padding: 1em 3em;
-    width: 50vw;
-    max-height: max-content;
-    // margin: 0;
+  border-top: 1px solid #eee;
+  background-color: white;
+  padding: 1em 3em;
+  // width: 50vw;
+  max-height: max-content;
+  // margin: 0;
 
-    h3 {
-      color: gray;
-      margin-bottom: 10px;
-    }  
+  h3 {
+    color: gray;
+    margin-bottom: 10px;
+  }
 
-    pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    }
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}

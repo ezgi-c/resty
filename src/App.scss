@@ -10,8 +10,8 @@ body {
 body {
   background: $backgroundColor;
   height: 100%;
-  width:100%;
-  display:inline;
+  width: 100%;
+  display: inline;
 
   #root {
     display: flex;
@@ -20,6 +20,6 @@ body {
   }
 
   .results-history {
-display: flex;
+    display: flex;
   }
 }
